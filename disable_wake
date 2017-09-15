@@ -1,0 +1,75 @@
+#!/bin/sh
+# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+### BEGIN INIT INFO
+# Provides:          disable_wake
+# Required-Start:    $udev
+# Required-Stop:
+# Should-Start:      udev
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Disable wake pc by usb.
+# Description:       This skript allow disable wake pc by usb ports.
+### END INIT INFO
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC="Disable wake pc by usb"
+
+DEVICES_PATH=/sys/bus/pci/devices/
+
+USB1=0000\:00\:14.0/power/wakeup
+USB2=0000\:00\:1a.0/power/wakeup
+USB3=0000\:00\:1d.0/power/wakeup
+USB4=0000\:03\:00.0/power/wakeup
+
+# Define LSB log_* functions.
+. /lib/lsb/init-functions
+
+do_start()
+{
+	echo disabled > $DEVICES_PATH$USB1
+	echo disabled > $DEVICES_PATH$USB2
+	echo disabled > $DEVICES_PATH$USB3
+	echo disabled > $DEVICES_PATH$USB4
+	echo "Wake disabled"
+}
+
+do_stop()
+{
+	echo enabled > $DEVICES_PATH$USB1
+	echo enabled > $DEVICES_PATH$USB2
+	echo enabled > $DEVICES_PATH$USB3
+	echo enabled > $DEVICES_PATH$USB4
+	echo "Wake enabled"
+}
+
+do_status()
+{
+	echo "00:14.0 " && cat $DEVICES_PATH$USB1
+	echo "00:1a.0 " && cat $DEVICES_PATH$USB1
+	echo "00:1d.0 " && cat $DEVICES_PATH$USB1
+	echo "03:00.0 " && cat $DEVICES_PATH$USB1
+	echo
+}
+
+case "$1" in
+	start|"")
+		do_start
+		;;
+	stop)
+		do_stop
+		;;
+	status)
+		do_status
+		;;
+	restart|reload|force-reload)
+		echo "Error: argument '$1' not supported"
+		exit 3
+		;;
+	*)
+		echo "Usage: disable_wake [start|stop|status]" >&2
+		exit 3
+		;;
+esac
+
+# Author: Ilya Krotkikh <ivashca99@gmail.com>
+
