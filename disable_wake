@@ -7,12 +7,12 @@
 # Should-Start:      udev
 # Default-Start:     S
 # Default-Stop:
-# Short-Description: Disable wake pc by usb.
-# Description:       This skript allow disable wake pc by usb ports.
+# Short-Description: Disable wake PC by USB.
+# Description:       This script allow disable wake PC by USB ports.
 ### END INIT INFO
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="Disable wake pc by usb"
+DESC="Disable wake PC by USB"
 
 DEVICES_PATH=/sys/bus/pci/devices/
 
