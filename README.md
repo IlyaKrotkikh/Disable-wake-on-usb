@@ -13,7 +13,7 @@ $ chmod 755 /etc/init.d/disable_wake
 ```
 ### 2. Устанавливаем ссылки в необходимые уровни инициализации
 ```sh
-$ update-rc.d -n disable_wake enable
+$ update-rc.d disable_wake
 ```
 ## Удаление
 ### 1. Убираем ссылки
@@ -49,6 +49,6 @@ ivashca99@gmail.com
 * [help.ubuntu.ru_Creating-your-own-autorun-script] - Создание своего скрипта автозапуска при загрузке компьютера
 
 [//]: # (Source links list)
-[linuks.it_disable-wake-on-usb]: <http://www.linuks.lt/blog/ru/index.php/2012-11-03-linux--keyboard>
+[linuks.it_disable-wake-on-usb]: <http://www.linuks.lt/blog/ru/index.php/2012-11-03-linux-disable-wake-on-usb-keyboard>
 [nix.zeya.org_work-wich-init]: <http://nix.zeya.org/forum/index.php?topic=64.0>
 [help.ubuntu.ru_Creating-your-own-autorun-script]: <http://help.ubuntu.ru/wiki/%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B0_%D0%B0%D0%B2%D1%82%D0%BE%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0>
